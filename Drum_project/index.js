@@ -2,13 +2,15 @@
 document.addEventListener("keydown",function(Event){
 
     makeSound(Event.key);
+    animationButton(Event.key);
 })
 
 //detecting button presses 
 var totalDrums=document.querySelectorAll(".drum").length;
 for(var i=0;i<totalDrums;i++){
     document.querySelectorAll(".drum")[i].addEventListener("click",function(){
-        makeSound(this.innerHTML )
+        makeSound(this.innerHTML );
+        animationButton(this.innerHTML );
     });
     
     }
@@ -53,4 +55,10 @@ function makeSound(key){
   
 }
 
-
+function animationButton(cuurntKey){
+    var activeButton = document.querySelector("."+cuurntKey);
+    activeButton.classList.add("pressed");
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    },100);
+}
